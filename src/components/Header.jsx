@@ -88,11 +88,6 @@ const NavButton = styled.button`
   color: #374151; /* text-gray-700 */
   box-shadow: none;
 
-  &:hover {
-    background-color: #d1d5db; /* hover:bg-gray-300 */
-    color: #374151;
-  }
-
   ${props => props.$isActive && `
     background-color: #111827; /* bg-gray-900 */
     color: #ffffff; /* text-white */
