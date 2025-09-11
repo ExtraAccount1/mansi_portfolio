@@ -90,6 +90,7 @@ const NavButton = styled.button`
 
   &:hover {
     background-color: #d1d5db; /* hover:bg-gray-300 */
+    color: #374151;
   }
 
   ${props => props.$isActive && `
