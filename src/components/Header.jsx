@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Header = ({ currentPage, setCurrentPage }) => {
   const pages = [
@@ -17,7 +18,18 @@ const Header = ({ currentPage, setCurrentPage }) => {
           <h1 className="text-4xl font-bold text-gray-900">Mansi Dubey</h1>
           <p className="mt-1 text-xl text-gray-600">React.js Developer</p>
         </div>
-         <nav className="flex flex-wrap justify-center md:justify-end gap-2 md:gap-4">
+         <NavContainer>
+            {pages.map((page) => (
+              <NavButton
+                key={page.key}
+                $isActive={currentPage === page.key}
+                onClick={() => setCurrentPage(page.key)}
+              >
+                {page.name}
+              </NavButton>
+            ))}
+          </NavContainer>
+         {/* <nav className="flex flex-wrap justify-center md:justify-end gap-2 md:gap-4">
             {pages.map((page) => (
               <button
                 key={page.key}
@@ -31,7 +43,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                 {page.name}
               </button>
             ))}
-          </nav>
+          </nav> */}
         {/* <nav className="mt-4 md:mt-0">
           <ul className="flex flex-wrap justify-center space-x-4">
             {pages.map(page => (
@@ -50,5 +62,41 @@ const Header = ({ currentPage, setCurrentPage }) => {
     </header>
   );
 };
+
+const NavContainer = styled.nav`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem; /* gap-2 */
+  @media (min-width: 768px) {
+    justify-content: flex-end; /* md:justify-end */
+    gap: 1rem; /* md:gap-4 */
+  }
+`;
+
+const NavButton = styled.button`
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem; /* py-2 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 500; /* font-medium */
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+  border: none;
+  background-color: #e5e7eb; /* bg-gray-200 */
+  color: #374151; /* text-gray-700 */
+  box-shadow: none;
+
+  &:hover {
+    background-color: #d1d5db; /* hover:bg-gray-300 */
+  }
+
+  ${props => props.$isActive && `
+    background-color: #111827; /* bg-gray-900 */
+    color: #ffffff; /* text-white */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  `}
+`;
 
 export default Header;
