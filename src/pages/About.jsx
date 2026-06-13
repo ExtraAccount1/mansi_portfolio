@@ -6,6 +6,9 @@ const About = () => {
   return (
     <section className="bg-white rounded-xl shadow-lg p-8 mb-12">
       <SectionHeader title="About Me" />
+      {/* <SectionHeader title="About Me" />
+      <SectionHeader title="About Me" />
+      <SectionHeader title="About Me" /> */}
       <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
         <img
           src="https://placehold.co/150x150/e2e8f0/64748b?text=MD"
